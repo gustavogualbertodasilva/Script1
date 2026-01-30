@@ -1,6 +1,6 @@
 local UI = {}
 
-function UI.Init()
+function UI.Init(Aimlock)
 
     local player = game.Players.LocalPlayer
     local playerGui = player:WaitForChild("PlayerGui")
@@ -28,7 +28,6 @@ function UI.Init()
     gradient.Rotation = 45
     gradient.Parent = quadroAzul
 
-    -- Botão AIMLOCK
     local AimLockButton = Instance.new("TextButton")
     AimLockButton.Size = UDim2.new(0, 100, 0, 40)
     AimLockButton.Position = UDim2.new(0.5, -50, 0.5, -25)
@@ -43,8 +42,11 @@ function UI.Init()
     botaoCorner.Parent = AimLockButton
 
     AimLockButton.MouseButton1Click:Connect(function()
-        AimLockButton.BackgroundColor3 = Color3.fromRGB(0, 70, 0)
-        print("AimLock ativado")
+        aimlock.Toggle(not aimlock.IsActive())
+        if aimlock.IsActive() then 
+            AimLockButton.BackgroundColor3 = Color3.fromRGB(0, 70, 0)
+        else
+            AimLockButton.BackgroundColor3 = Color3.fromRGB(70, 0, 0)
     end)
 
 end

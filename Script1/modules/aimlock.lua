@@ -1,10 +1,13 @@
 local Aimlock = {}
 
-local ativo = false
+local AimLockActive = false -- variável privada do módulo
 
-function Aimlock.Toggle()
-    ativo = not ativo
-    print("Aimlock:", ativo and "ON" or "OFF")
+function Aimlock.TurnOnOrOff(estado)
+    AimLockActive = estado
+end
+
+function Aimlock.IsActive()
+    return AimLockActive
 end
 
 return Aimlock
