@@ -43,6 +43,7 @@ function UI.Init(Aimlock)
 
     AimLockButton.MouseButton1Click:Connect(function()
         Aimlock.TurnOnOrOff(not aimlock.IsActive())
+        print("Estado agora:", Aimlock.IsActive())
         if Aimlock.IsActive() then 
             AimLockButton.BackgroundColor3 = Color3.fromRGB(0, 70, 0)
         else
