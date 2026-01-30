@@ -42,11 +42,12 @@ function UI.Init(Aimlock)
     botaoCorner.Parent = AimLockButton
 
     AimLockButton.MouseButton1Click:Connect(function()
-        aimlock.Toggle(not aimlock.IsActive())
-        if aimlock.IsActive() then 
+        Aimlock.Toggle(not aimlock.IsActive())
+        if Aimlock.IsActive() then 
             AimLockButton.BackgroundColor3 = Color3.fromRGB(0, 70, 0)
         else
             AimLockButton.BackgroundColor3 = Color3.fromRGB(70, 0, 0)
+        end
     end)
 
 end
