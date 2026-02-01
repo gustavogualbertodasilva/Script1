@@ -28,7 +28,7 @@ Instance.new("UICorner", circle).CornerRadius = UDim.new(1, 0)
 local stroke = Instance.new("UIStroke")
 stroke.Color = Color3.fromRGB(255,0,0)
 stroke.Thickness = 2
-stroke.Parent = Aimbot
+stroke.Parent = circle
 
 -- 2. Função para achar a cabeça mais próxima do centro
 local function getClosestHead()
