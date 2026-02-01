@@ -66,7 +66,7 @@ RunService:BindToRenderStep("Headlock", Enum.RenderPriority.Camera.Value + 1, fu
                 Camera.CFrame = CFrame.lookAt(Camera.CFrame.Position, target.Position)
             end
         else
-            local AimLockUI = playerGui:FindFirstChild("MinhaInterfaceExecutor")
+            local AimLockUI = playerGui:FindFirstChild("Aimbot")
             if AimLockUI then
                 AimLockUI:Destroy()
                 
