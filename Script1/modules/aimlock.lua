@@ -60,7 +60,7 @@ end
 -- 3. Loop de Câmera (Sobrescreve Arma/Shift Lock)
 RunService:BindToRenderStep("Headlock", Enum.RenderPriority.Camera.Value + 1, function()
     
-    if not AimLockActive than
+    if not AimLockActive then
         local AimLockUI = playerGui:FindFirstChild("Aimbot")
         if AimLockUI then
             AimLockUI:Destroy()
