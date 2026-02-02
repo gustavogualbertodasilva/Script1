@@ -36,7 +36,7 @@ function UI.Init(Aimlock)
 
     local MinimizarMenu = Instance.new("TextButton")
     MinimizarMenu.Size = UDim2.new(0,70,0,25)
-    MinimizarMenu.Position = UDim2.new(1,0,1,0)
+    MinimizarMenu.Position = UDim2.new(1,-70,0,0)
     MinimizarMenu.BackgroundColor3 = Color3.fromRGB(10,40,70)
     MinimizarMenu.Text = "MINIMIZE"
     MinimizarMenu.TextColor3 = Color3.fromRGB(0,255,255)
