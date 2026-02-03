@@ -2,13 +2,17 @@ local UI = {}
 
 function UI.Init(Aimlock)
 
---INTERFACE GERAL_____________________________________________________
+
     local player = game.Players.LocalPlayer
     local playerGui = player:WaitForChild("PlayerGui")
+
+
+--INTERFACE GERAL_____________________________________________________
 
     local screenGui = Instance.new("ScreenGui")
     screenGui.Name = "MinhaInterfaceExecutor"
     screenGui.ResetOnSpawn = false
+    quadroAzul.ClipsDescendants = true
     screenGui.Parent = playerGui
 
     local quadroAzul = Instance.new("Frame")
@@ -31,17 +35,51 @@ function UI.Init(Aimlock)
     gradient.Parent = quadroAzul
 --____________________________________________________________________
 
+--INTERFACE MINIMIZADA________________________________________________
+    local TelaMinimizada = instance.new("Frame")
+    local CornerTelaMinimizada = Instance.new("UICorner")
+    local GradientTelaMinimizada = Instance.new("UIGradient")
+    
+    TelaMinimizada.Position = UDim2.new(0.5, -30, 0, 100)
+    TelaMinimizada.Size = UDim2.new(0, 60, 0, 60)
+    TelaMinimizada.BackgroundColor3 = Color3.fromRGB(0,255,255)
+    TelaMinimizada.Parent = screenGui
+
+    CornerTelaMinimizada.CornerRadius = UDim.new(0, 10)
+    CornerTelaMinimizada.Parent = TelaMinimizada
+
+    GradientTelaMinimizada.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 255)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
+    }
+    GradientTelaMinimizada.Rotation = 45
+    GradientTelaMinimizada.Parent = TelaMinimizada
+
+    TelaMinimizada.MouseButton1Click:Connect(function()
+        
+        quadroAzul.Visible = true
+        TelaMinimizada = false
+    end)
+
+--____________________________________________________________________
+
 
 --Minimizar Menu Do Script____________________________________________
 
     local MinimizarMenu = Instance.new("TextButton")
     MinimizarMenu.Size = UDim2.new(0,70,0,25)
     MinimizarMenu.Position = UDim2.new(1,-70,0,0)
-    MinimizarMenu.BackgroundColor3 = Color3.fromRGB(10,40,70)
+    MinimizarMenu.BackgroundColor3 = Color3.fromRGB(15,38,60)
     MinimizarMenu.Text = "MINIMIZE"
     MinimizarMenu.TextColor3 = Color3.fromRGB(0,255,255)
     MinimizarMenu.Parent = quadroAzul
-    AimLockButton.BackgroundTransparency = 0
+    MinimizarMenu.BackgroundTransparency = 0
+
+    MinimizarMenu.MouseButton1Click:Connect(function()
+        
+        quadroAzul.Visible = false
+        TelaMinimizada = true
+    end)
 
 --____________________________________________________________________
 
