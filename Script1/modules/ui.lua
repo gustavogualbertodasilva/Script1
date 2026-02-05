@@ -45,6 +45,7 @@ function UI.Init(Aimlock)
     TelaMinimizada.Size = UDim2.new(0, 60, 0, 60)
     TelaMinimizada.BackgroundColor3 = Color3.fromRGB(0,255,255)
     TelaMinimizada.Parent = screenGui
+    TelaMinimizada.Visible = false
 
     CornerTelaMinimizada.CornerRadius = UDim.new(0, 10)
     CornerTelaMinimizada.Parent = TelaMinimizada
@@ -55,7 +56,6 @@ function UI.Init(Aimlock)
     }
     GradientTelaMinimizada.Rotation = 45
     GradientTelaMinimizada.Parent = TelaMinimizada
-    TelaMinimizada.Visible = false
 
 
     TelaMinimizada.MouseButton1Click:Connect(function()
