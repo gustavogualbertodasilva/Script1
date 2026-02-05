@@ -55,6 +55,8 @@ function UI.Init(Aimlock)
     }
     GradientTelaMinimizada.Rotation = 45
     GradientTelaMinimizada.Parent = TelaMinimizada
+    TelaMinimizada.Visible = false
+
 
     TelaMinimizada.MouseButton1Click:Connect(function()
         
@@ -79,7 +81,7 @@ function UI.Init(Aimlock)
     MinimizarMenu.MouseButton1Click:Connect(function()
         
         quadroAzul.Visible = false
-        TelaMinimizada = true
+        TelaMinimizada.Visible = true
     end)
 
 --____________________________________________________________________
