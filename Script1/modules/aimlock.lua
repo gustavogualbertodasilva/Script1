@@ -15,20 +15,37 @@ local FOV_RADIUS = 30
 local IsClicking = false
 
 -- 1. Interface do Círculo
-local sg = Instance.new("ScreenGui", LocalPlayer.PlayerGui)
-sg.IgnoreGuiInset = true
-sg.Name = "Aimbot"
-local circle = Instance.new("Frame", sg)
-circle.AnchorPoint = Vector2.new(0.5, 0.5)
-circle.Position = UDim2.new(0.5, 0, 0.5, 0)
-circle.Size = UDim2.new(0, FOV_RADIUS * 2, 0, FOV_RADIUS * 2)
-circle.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-circle.BackgroundTransparency = 1.00
-Instance.new("UICorner", circle).CornerRadius = UDim.new(1, 0)
-local stroke = Instance.new("UIStroke")
-stroke.Color = Color3.fromRGB(255,0,0)
-stroke.Thickness = 2
-stroke.Parent = circle
+local circleGui
+local circle
+
+local function CriarCirculo()
+    if not circleGui then
+        circleGui = Instance.new("ScreenGui")
+        circleGui.Name = "Aimbot"
+        circleGui.IgnoreGuiInset = true
+        circleGui.ResetOnSpawn = false
+        circleGui.Parent = LocalPlayer.PlayerGui
+    end
+
+    if circle then
+        circle:Destroy()
+    end
+
+    circle = Instance.new("Frame")
+    circle.AnchorPoint = Vector2.new(0.5, 0.5)
+    circle.Position = UDim2.new(0.5, 0, 0.5, 0)
+    circle.Size = UDim2.new(0, FOV_RADIUS * 2, 0, FOV_RADIUS * 2)
+    circle.BackgroundTransparency = 1
+    circle.Visible = AimLockActive
+    circle.Parent = circleGui
+
+    Instance.new("UICorner", circle).CornerRadius = UDim.new(1, 0)
+
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = Color3.fromRGB(255, 0, 0)
+    stroke.Thickness = 2
+    stroke.Parent = circle
+end
 
 -- 2. Função para achar a cabeça mais próxima do centro
 local function getClosestHead()
@@ -106,6 +123,10 @@ function Aimlock.IsActive()
     return AimLockActive
 end
 
+function Aimlock.SetFOV(fov)
+    FOV_RADIUS = math.clamp(fov, 5, 75)
+    CriarCirculo()
+end
 
 
 return Aimlock

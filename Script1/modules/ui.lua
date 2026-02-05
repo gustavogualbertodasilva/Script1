@@ -36,6 +36,7 @@ function UI.Init(Aimlock)
     gradient.Parent = quadroAzul
 --____________________________________________________________________
 
+
 --INTERFACE MINIMIZADA________________________________________________
     local TelaMinimizada = Instance.new("TextButton")
     local CornerTelaMinimizada = Instance.new("UICorner")
@@ -45,7 +46,7 @@ function UI.Init(Aimlock)
     TelaMinimizada.Size = UDim2.new(0, 60, 0, 60)
     TelaMinimizada.BackgroundColor3 = Color3.fromRGB(0,255,255)
     TelaMinimizada.Parent = screenGui
-    TelaMinimizada.Visible = false
+    TelaMinimizada.Visible = false 
 
     CornerTelaMinimizada.CornerRadius = UDim.new(0, 10)
     CornerTelaMinimizada.Parent = TelaMinimizada
@@ -86,6 +87,9 @@ function UI.Init(Aimlock)
 
 --____________________________________________________________________
 
+
+--AIMLBOT SETTINGS____________________________________________________
+
 --Botão de desativar/ativar AimBot____________________________________
     local AimLockButton = Instance.new("TextButton")
     AimLockButton.Size = UDim2.new(0, 100, 0, 40)
@@ -108,9 +112,56 @@ function UI.Init(Aimlock)
             AimLockButton.BackgroundColor3 = Color3.fromRGB(70, 0, 0)
         end
     end)
---__________________________________________________________________
+--____________________________________________________________________
 
 
+--Mudar Fov AimBot____________________________________________________
+
+local NumericInputFov = Instance.new("TextBox")
+NumericInputFov.Size = UDim2.new(0, 80, 0, 35)
+NumericInputFov.Position = UDim2.new(0.5, -40, 0.8, 0)
+NumericInputFov.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+NumericInputFov.TextColor3 = Color3.fromRGB(0, 255, 255)
+NumericInputFov.PlaceholderText = "5 - 75"
+NumericInputFov.Text = "20"
+NumericInputFov.ClearTextOnFocus = false
+NumericInputFov.Parent = quadroAzul
+Instance.new("UICorner", NumericInputFov).CornerRadius = UDim.new(0, 4)
+
+NumericInputFov:GetPropertyChangedSignal("Text"):Connect(function()
+    local texto = NumericInputFov.Text
+    local somenteNumeros = texto:gsub("%D", "")
+    if texto ~= somenteNumeros then
+        NumericInputFov.Text = somenteNumeros
+    end
+end)
+
+InputNumero.FocusLost:Connect(function()
+    local valor = tonumber(InputNumero.Text)
+
+    if not valor then
+        InputNumero.Text = "5"
+        return
+    end
+
+    if valor < 5 then
+        InputNumero.Text = "5"
+    elseif valor > 75 then
+        InputNumero.Text = "75"
+    end
+end)
+
+InputNumero.FocusLost:Connect(function()
+    local valor = tonumber(InputNumero.Text)
+    if valor then
+        Aimlock.SetFOV(valor)
+    end
+end)
+
+--____________________________________________________________________
+
+
+--____________________________________________________________________
 
 end
 
