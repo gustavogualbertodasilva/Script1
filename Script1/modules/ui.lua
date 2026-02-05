@@ -37,7 +37,7 @@ function UI.Init(Aimlock)
 --____________________________________________________________________
 
 --INTERFACE MINIMIZADA________________________________________________
-    local TelaMinimizada = instance.new("Frame")
+    local TelaMinimizada = Instance.new("TextButton")
     local CornerTelaMinimizada = Instance.new("UICorner")
     local GradientTelaMinimizada = Instance.new("UIGradient")
     
@@ -59,7 +59,7 @@ function UI.Init(Aimlock)
     TelaMinimizada.MouseButton1Click:Connect(function()
         
         quadroAzul.Visible = true
-        TelaMinimizada = false
+        TelaMinimizada.Visible = false
     end)
 
 --____________________________________________________________________
