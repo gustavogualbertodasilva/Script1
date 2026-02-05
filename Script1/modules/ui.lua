@@ -12,10 +12,11 @@ function UI.Init(Aimlock)
     local screenGui = Instance.new("ScreenGui")
     screenGui.Name = "MinhaInterfaceExecutor"
     screenGui.ResetOnSpawn = false
+    local quadroAzul = Instance.new("Frame")
     quadroAzul.ClipsDescendants = true
     screenGui.Parent = playerGui
 
-    local quadroAzul = Instance.new("Frame")
+    
     local uicornerAzul = Instance.new("UICorner")
     local gradient = Instance.new("UIGradient")
 
