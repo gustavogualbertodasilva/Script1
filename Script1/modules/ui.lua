@@ -136,23 +136,23 @@ NumericInputFov:GetPropertyChangedSignal("Text"):Connect(function()
     end
 end)
 
-InputNumero.FocusLost:Connect(function()
-    local valor = tonumber(InputNumero.Text)
+NumericInputFov.FocusLost:Connect(function()
+    local valor = tonumber(NumericInputFov.Text)
 
     if not valor then
-        InputNumero.Text = "5"
+        NumericInputFov.Text = "5"
         return
     end
 
     if valor < 5 then
-        InputNumero.Text = "5"
+        NumericInputFov.Text = "5"
     elseif valor > 75 then
-        InputNumero.Text = "75"
+        NumericInputFov.Text = "75"
     end
 end)
 
-InputNumero.FocusLost:Connect(function()
-    local valor = tonumber(InputNumero.Text)
+NumericInputFov.FocusLost:Connect(function()
+    local valor = tonumber(NumericInputFov.Text)
     if valor then
         Aimlock.SetFOV(valor)
     end
