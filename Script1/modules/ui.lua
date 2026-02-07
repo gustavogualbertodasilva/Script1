@@ -38,25 +38,16 @@ function UI.Init(Aimlock)
 
 
 --INTERFACE MINIMIZADA________________________________________________
-    local TelaMinimizada = Instance.new("TextButton")
+    local TelaMinimizada = Instance.new("ImageButton")
     local CornerTelaMinimizada = Instance.new("UICorner")
     local GradientTelaMinimizada = Instance.new("UIGradient")
     
     TelaMinimizada.Position = UDim2.new(0.5, -30, 0, 100)
-    TelaMinimizada.Size = UDim2.new(0, 60, 0, 60)
-    TelaMinimizada.BackgroundColor3 = Color3.fromRGB(0,255,255)
+    TelaMinimizada.Size = UDim2.fromOffset(60,60)
     TelaMinimizada.Parent = screenGui
     TelaMinimizada.Visible = false 
-
-    CornerTelaMinimizada.CornerRadius = UDim.new(0, 10)
-    CornerTelaMinimizada.Parent = TelaMinimizada
-
-    GradientTelaMinimizada.Color = ColorSequence.new{
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 255, 255)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
-    }
-    GradientTelaMinimizada.Rotation = 45
-    GradientTelaMinimizada.Parent = TelaMinimizada
+    TelaMinimizada.BackgroundTransparency = 1
+    TelaMinimizada.Image = "rbxassetid://73397882851431"
 
 
     TelaMinimizada.MouseButton1Click:Connect(function()
