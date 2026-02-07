@@ -1,6 +1,6 @@
 local Aimlock = {}
 
-local AimLockActive = false -- variável privada do módulo
+local AimLockActive = false
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -38,7 +38,6 @@ local function CriarCirculo()
     circle.Position = UDim2.new(0.5, 0, 0.5, 0)
     circle.Size = UDim2.new(0, FOV_RADIUS * 2, 0, FOV_RADIUS * 2)
     circle.BackgroundTransparency = 1
-    circle.Visible = AimLockActive
     circle.Parent = circleGui
 
     local corner = Instance.new("UICorner")
@@ -126,6 +125,7 @@ function Aimlock.TurnOnOrOff(estado)
         circle.Visible = AimLockActive
     end
 end
+
 
 
 function Aimlock.IsActive()
