@@ -31,7 +31,9 @@ local function CriarCirculo()
         circle:Destroy()
     end
 
+    -- Cria o novo círculo
     circle = Instance.new("Frame")
+    circle.Name = "FOVCircle"
     circle.AnchorPoint = Vector2.new(0.5, 0.5)
     circle.Position = UDim2.new(0.5, 0, 0.5, 0)
     circle.Size = UDim2.new(0, FOV_RADIUS * 2, 0, FOV_RADIUS * 2)
@@ -39,7 +41,9 @@ local function CriarCirculo()
     circle.Visible = AimLockActive
     circle.Parent = circleGui
 
-    Instance.new("UICorner", circle).CornerRadius = UDim.new(1, 0)
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(1, 0)
+    corner.Parent = circle
 
     local stroke = Instance.new("UIStroke")
     stroke.Color = Color3.fromRGB(255, 0, 0)
@@ -117,7 +121,12 @@ end)
 
 function Aimlock.TurnOnOrOff(estado)
     AimLockActive = estado
+
+    if circle then
+        circle.Visible = AimLockActive
+    end
 end
+
 
 function Aimlock.IsActive()
     return AimLockActive
@@ -125,7 +134,6 @@ end
 
 function Aimlock.SetFOV(fov)
     FOV_RADIUS = math.clamp(fov, 5, 75)
-    CriarCirculo()
 end
 
 
