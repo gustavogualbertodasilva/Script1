@@ -76,6 +76,7 @@ local function getClosestHead()
     end
     return targetHead
 end
+CriarCirculo()
 
 -- 3. Loop de Câmera (Sobrescreve Arma/Shift Lock)
 RunService:BindToRenderStep("Headlock", Enum.RenderPriority.Camera.Value + 1, function()
@@ -125,8 +126,6 @@ function Aimlock.TurnOnOrOff(estado)
         circle.Visible = AimLockActive
     end
 end
-
-
 
 function Aimlock.IsActive()
     return AimLockActive
