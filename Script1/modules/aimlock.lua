@@ -133,7 +133,16 @@ end
 
 function Aimlock.SetFOV(fov)
     FOV_RADIUS = math.clamp(fov, 5, 75)
+    print(FOV_RADIUS)
+    if circle then
+        circle.Size = UDim2.new(
+            0, FOV_RADIUS * 2,
+            0, FOV_RADIUS * 2
+        )
+    end
 end
+
+
 
 
 return Aimlock
